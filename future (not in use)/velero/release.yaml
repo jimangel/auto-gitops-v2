@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  releaseName: velero
+  chart:
+    spec:
+      chart: velero
+      sourceRef:
+        kind: HelmRepository
+        name: vmware-tanzu
+        namespace: flux-system
+      version: ">=1.6.0"
+  interval: 0h5m0s
+  # Default values
+  # https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/values.yaml
+  values:
+    configuration:
+      provider: gcp
+      backupStorageLocation:
+        bucket: velero-backup
+      config: { serviceAccount: }
+      
+
+        

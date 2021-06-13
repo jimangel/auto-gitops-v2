@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1alpha1
+kind: ImageRepository
+metadata:
+  name: cni
+  namespace: flux-system
+spec:
+  image: docker.io/calico/cni
+  interval: 1m0s

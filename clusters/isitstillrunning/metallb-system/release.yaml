@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metal-lb
+  namespace: metallb-system
+spec:
+  releaseName: metallb
+  chart:
+    spec:
+      chart: metallb
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      version: ">=0.10.2"
+  interval: 0h5m0s
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  # Default values
+  # https://github.com/bitnami/charts/blob/master/bitnami/metallb/values.yaml
+  values:
+    configInline:
+      address-pools:
+       - name: default
+         protocol: layer2
+         addresses:
+         - 192.168.7.210-192.168.7.254
+         # make part of ansible?

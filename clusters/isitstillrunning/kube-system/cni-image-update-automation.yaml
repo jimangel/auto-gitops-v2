@@ -1,0 +1,17 @@
+apiVersion: image.toolkit.fluxcd.io/v1alpha1
+kind: ImageUpdateAutomation
+metadata:
+  name: cni
+  namespace: flux-system
+spec:
+  checkout:
+    branch: main
+    gitRepositoryRef:
+      name: cni
+  commit:
+    authorEmail: fluxcdbot@particule.io
+    authorName: fluxcdbot
+    messageTemplate: 'update image'
+  interval: 1m0s
+  update:
+    strategy: Setters

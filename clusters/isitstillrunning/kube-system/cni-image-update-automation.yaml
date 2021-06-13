@@ -7,7 +7,7 @@ spec:
   checkout:
     branch: main
     gitRepositoryRef:
-      name: cni
+      name: flux-system
   commit:
     authorEmail: fluxcdbot@particule.io
     authorName: fluxcdbot

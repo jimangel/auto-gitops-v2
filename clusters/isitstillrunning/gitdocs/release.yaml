@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitdocs
+  namespace: gitdocs
+spec:
+  releaseName: gitdocs
+  chart:
+    spec:
+      chart: gitdocs
+      sourceRef:
+        kind: HelmRepository
+        name: jimangel-charts
+        namespace: flux-system
+      version: ">=0.1.1"
+  interval: 0h5m0s
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  # Default values
+  # https://github.com/jimangel/GitDocs/blob/master/helm-chart/values.yaml
+  values:
+    ingress:
+      enabled: true

@@ -4,5 +4,5 @@ metadata:
   name: cni
   namespace: flux-system
 spec:
-  image: "docker.io/calico/cni"
+  image: docker.io/calico/cni
   interval: 1m0s

@@ -8,3 +8,4 @@ resources:
   - minio.yaml
   - prometheus-community.yaml
   - ingress-nginx.yaml
+  - jimangel-charts.yaml
